@@ -26,63 +26,71 @@
         <form id="registerForm" novalidate>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="fName" aria-describedby="nameHelp">
+                <input type="text" class="form-control" id="fName" aria-describedby="nameHelp"
+                    placeholder="Enter your name">
                 <div class="text-danger" id="nameError"></div>
+                <div class="text-success" id="nameValid"></div>
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                    placeholder="Enter your email">
                 <div class="text-danger" id="emailError"></div>
+                <div class="text-success" id="emailValid"></div>
 
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Mobile Number</label>
-                <input type="number" class="form-control" id="mobile" aria-describedby="numberHelp">
+                <input type="number" class="form-control" id="mobile" aria-describedby="numberHelp"
+                    placeholder="Enter your number">
                 <div class="text-danger" id="numberError"></div>
+                <div class="text-success" id="numberValid"></div>
             </div>
             <div class="mb-3">
                 <label class="form-label">Gender</label>
-                <div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" id="genderMale" value="male">
-                        <label class="form-check-label" for="genderMale">Male</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" id="genderFemale" value="female">
-                        <label class="form-check-label" for="genderFemale">Female</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" id="genderOther" value="other">
-                        <label class="form-check-label" for="genderOther">Other</label>
-                    </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="genderMale" value="male">
+                    <label class="form-check-label" for="genderMale">Male</label>
                 </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="genderFemale" value="female">
+                    <label class="form-check-label" for="genderFemale">Female</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="genderOther" value="other">
+                    <label class="form-check-label" for="genderOther">Other</label>
+                </div>
+                <div class="text-danger" id="genderError"></div>
+                <div class="text-success" id="genderValid"></div>
             </div>
 
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password">
+                <input type="password" class="form-control" id="password" placeholder="Enter your password">
                 <div class="text-danger" id="passwordError"></div>
+                <div class="text-success" id="passwordValid"></div>
 
             </div>
             <div class="mb-3">
                 <label for="confirmPassword" class="form-label">Confirm Password</label>
                 <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
                     placeholder="Re-enter your password" required>
-                    <div class="text-danger" id="passwordCError"></div>
+                <div class="text-danger" id="passwordCError"></div>
+                <div class="text-success" id="passwordCValid"></div>
             </div>
 
 
             <button type="submit" class="btn btn-primary">Register</button>
-
-         <div class="alert alert-success mt-3 p-2 d-none" role="alert" id="successfulMsg">Registered Successfully..</div>
         </form>
 
+        <div class="alert alert-success mt-3 p-2 d-none" id="successfulMsg">Registered Successfully..</div>
 
     </div>
 
 
 
-      <script src="./script.js"></script>
+    <script src="./script.js"></script>
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
 

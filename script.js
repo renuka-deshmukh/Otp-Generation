@@ -1,43 +1,73 @@
 
-document.getElementById("registerForm").addEventListener("submit", function (e){
+const form = document.getElementById("registerForm")
+
+document.getElementById("registerForm").addEventListener("submit", function (e) {
     e.preventDefault();
-console.log("Data Submited Successfully")
-
-const name = document.getElementById("fName").value.trim();
-const email = document.getElementById("email").value.trim();
-const mobile = document.getElementById("mobile").value.trim();
-const password = document.getElementById("password").value.trim();
-const confirmPassword = document.getElementById("confirmPassword").value.trim();
 
 
-let isValid = true;
+    const name = document.getElementById("fName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const mobile = document.getElementById("mobile").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const confirmPassword = document.getElementById("confirmPassword").value.trim();
+    const gender = document.querySelector('input[name="gender"]:checked');
 
-if(name.length<2){
-    document.getElementById("nameError").textContent = "Name must be atleast 2 characters."
-    isValid = false;
-}
 
-if( mobile.length != 10){
-    document.getElementById("numberError").textContent = "Mobile Number should be 10 digits "
-    if( mobile[0]==0){
-        document.getElementById("numberError").textContent = "Mobile Number should not start with 0"
+    let isValid = true;
+
+    if (name.length < 2) {
+        document.getElementById("nameError").textContent = "Name must be atleast 2 characters."
+        isValid = false;
+    } else {
+        document.getElementById("nameValid").textContent = "Valid Name."
     }
-isValid = false;
-}
 
-const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$#!%*?&])[A-Za-z\d@$#!%*?&]{8,}$/;
+    const emailRegex = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (!emailRegex.test(email)) {
+        document.getElementById("emailError").textContent = "Enter valid email."
+        isValid = false;
+    } else {
+        document.getElementById("emailValid").textContent = "Valid Email."
+    }
 
-if (!pattern.test(password)) {
-    document.getElementById("passwordError").textContent =("Password must have 8+ characters, uppercase, lowercase, number, and special character.");
-    return;
-    
-  }
+    if (mobile.length != 10) {
+        document.getElementById("numberError").textContent = "Mobile Number should be 10 digits "
+        if (mobile[0] == 0) {
+            document.getElementById("numberError").textContent = "Mobile Number should not start with 0"
+        }
+        isValid = false;
+    } else {
+        document.getElementById("numberValid").textContent = "Valid Number"
+    }
 
-  if (password !== confirmPassword){
-    document.getElementById("passwordCError").textContent ="Password do not matches";
-    return;
-  }
+    if (!gender) {
+        document.getElementById("genderError").textContent = "Please select gender"
+        isValid = false;
+    }
+    else {
+        document.getElementById("genderValid").textContent = "Gender Selected"
+    }
 
-document.getElementById("successfulMsg").textContent = "Registered Successfullyy..."
+    const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$#!%*?&])[A-Za-z\d@$#!%*?&]{8,}$/;
+
+    if (!pattern.test(password)) {
+        document.getElementById("passwordError").textContent = ("Password must have 8+ characters, uppercase, lowercase, number, and special character.");
+        isValid = false;
+
+        if (password !== confirmPassword) {
+            document.getElementById("passwordCError").textContent = "Password do not matches";
+            isValid = false;
+        }
+    } else {
+        document.getElementById("passwordCValid").textContent = "Valid Password"
+    }
+
+
+    if (isValid) {
+        document.getElementById("successfulMsg").classList.remove("d-none");
+        form.reset();
+
+    }
+
 
 })
